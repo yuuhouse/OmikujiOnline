@@ -1,0 +1,22 @@
+# 作業系統檔案
+.DS_Store
+Thumbs.db
+
+# 編輯器設定
+.vscode/
+.idea/
+
+# Node.js / npm 產生檔案
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 本機環境設定
+.env
+.env.*
+!.env.example
+
+# 私人企畫文件
+PROJECT_PLAN.md

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OmikujiOnline｜淺草寺抽籤</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <p class="eyebrow">OMIKUJI ONLINE</p>
+      <h1>淺草寺觀音百籤</h1>
+      <p class="intro">靜下心來，抽出今日的籤。</p>
+
+      <div class="omikuji-box" aria-hidden="true">
+        <svg viewBox="0 0 220 260" role="img" aria-label="日本寺院籤筒">
+          <defs>
+            <linearGradient id="metal" x1="0" x2="1">
+              <stop offset="0" stop-color="#7d2e2a" />
+              <stop offset=".22" stop-color="#c45645" />
+              <stop offset=".52" stop-color="#9a3832" />
+              <stop offset=".78" stop-color="#d4674f" />
+              <stop offset="1" stop-color="#6c2726" />
+            </linearGradient>
+            <linearGradient id="darkMetal" x1="0" x2="0" y2="1">
+              <stop stop-color="#c85a45" />
+              <stop offset="1" stop-color="#762826" />
+            </linearGradient>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+              <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#443d36" flood-opacity=".22" />
+            </filter>
+          </defs>
+          <g class="box-art" filter="url(#shadow)">
+            <path class="sticks" d="M91 91V17 M108 91V5 M125 91V23 M142 91V12" />
+            <ellipse cx="116" cy="89" rx="61" ry="16" fill="#4d211f" stroke="#d29a55" stroke-width="4" />
+            <path d="M54 88 67 112 67 212 54 190Z" fill="#762b29" stroke="#5c2424" stroke-width="3" />
+            <path d="M67 112 116 123 165 112 165 212 116 232 67 212Z" fill="url(#metal)" stroke="#5c2424" stroke-width="3" />
+            <path d="M165 112 178 88 178 190 165 212Z" fill="#762b29" stroke="#5c2424" stroke-width="3" />
+            <path d="M67 112 116 123 165 112 116 101Z" fill="url(#darkMetal)" stroke="#e0a45c" stroke-width="3" />
+            <ellipse cx="116" cy="101" rx="31" ry="7" fill="#351a1a" />
+            <text x="116" y="174" text-anchor="middle" fill="#ffe2a7" font-size="19" font-weight="700" writing-mode="tb">おみくじ</text>
+            <path d="M58 214 116 236 174 214 174 224 116 249 58 224Z" fill="#7c2d2a" stroke="#5c2424" stroke-width="3" />
+          </g>
+        </svg>
+      </div>
+
+      <section class="fortune-card" aria-live="polite">
+        <p class="result-label">本次籤運</p>
+        <p id="fortune-number" class="fortune-number">—</p>
+        <p id="fortune-type" class="fortune-type">尚未抽籤</p>
+        <div class="divider"></div>
+        <p class="poem-label">籤詩（示範內容）</p>
+        <p id="fortune-poem" class="fortune-poem">按下按鈕，抽取你的籤。</p>
+      </section>
+
+      <button id="draw-button" class="draw-button" type="button">開始抽籤</button>
+      <button id="music-toggle" class="music-toggle" type="button" aria-pressed="false">♫ 開啟背景音樂</button>
+      <p class="notice">目前籤詩為示範內容，吉凶分類依淺草寺 1～100 番資料。</p>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
