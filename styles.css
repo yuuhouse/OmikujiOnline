@@ -141,7 +141,15 @@ h1 {
 .fortune-number { margin: 8px 0 2px; font-size: 4rem; color: #a5483d; }
 .fortune-type { margin: 0; font-size: 1.5rem; }
 .divider { width: 44px; height: 1px; margin: 28px auto; background: #cbb5a0; }
-.fortune-poem { line-height: 2; color: #5e5250; }
+.fortune-poem {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  text-align: left;
+  white-space: pre-line;
+  line-height: 2;
+  color: #5e5250;
+}
 .fortune-details {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -247,6 +255,8 @@ h1 {
 .music-toggle:hover, .music-toggle[aria-pressed="true"] { color: #f5c77f; background: rgba(157, 82, 65, .22); }
 .music-toggle:focus-visible { outline: 3px solid #d4a99a; outline-offset: 3px; }
 .notice { margin-top: 22px; font-size: .8rem; color: #a99b95; }
+.credit { margin-top: 8px; font-size: .75rem; color: #a99b95; }
+.credit a { color: inherit; }
 
 @keyframes shake {
   from { transform: rotate(-1.5deg) translateX(-3px); }
