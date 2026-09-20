@@ -44,6 +44,8 @@
         </svg>
       </div>
 
+      <button id="draw-button" class="draw-button" type="button">開始抽籤</button>
+
       <section class="fortune-card" aria-live="polite">
         <p class="result-label">本次籤運</p>
         <p id="fortune-number" class="fortune-number">—</p>
@@ -51,9 +53,26 @@
         <div class="divider"></div>
         <p class="poem-label">籤詩（示範內容）</p>
         <p id="fortune-poem" class="fortune-poem">按下按鈕，抽取你的籤。</p>
+        <div id="fortune-details" class="fortune-details" hidden>
+          <div class="detail-wide"><span>讀音</span><strong data-field="poemReading"></strong></div>
+          <div class="detail-wide"><span>翻譯</span><strong data-field="poemTranslation"></strong></div>
+          <div class="detail-wide"><span>解說</span><strong data-field="explanation"></strong></div>
+          <div><span>願望</span><strong data-field="wish"></strong></div>
+          <div><span>待人</span><strong data-field="waitingPerson"></strong></div>
+          <div><span>失物</span><strong data-field="lostItem"></strong></div>
+          <div><span>旅行</span><strong data-field="travel"></strong></div>
+          <div><span>生意</span><strong data-field="business"></strong></div>
+          <div><span>學問</span><strong data-field="study"></strong></div>
+          <div><span>戀愛</span><strong data-field="love"></strong></div>
+          <div><span>健康</span><strong data-field="health"></strong></div>
+          <div><span>訴訟</span><strong data-field="lawsuit"></strong></div>
+          <div><span>搬遷</span><strong data-field="moving"></strong></div>
+          <div><span>婚姻</span><strong data-field="marriage"></strong></div>
+          <div class="detail-wide"><span>今日建議</span><strong data-field="advice"></strong></div>
+        </div>
       </section>
 
-      <button id="draw-button" class="draw-button" type="button">開始抽籤</button>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">☀ 日間模式</button>
       <button id="music-toggle" class="music-toggle" type="button" aria-pressed="false">♫ 開啟背景音樂</button>
       <p class="notice">目前籤詩為示範內容，吉凶分類依淺草寺 1～100 番資料。</p>
     </main>

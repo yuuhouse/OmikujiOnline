@@ -13,6 +13,33 @@ const fortunes = Object.entries(fortuneGroups).reduce((result, [type, numbers]) 
   return result;
 }, {});
 
+// 每支籤的完整資料欄位。正式籤詩與解說確認來源後，再逐筆替換示範內容。
+const fortuneData = Object.fromEntries(
+  Array.from({ length: 100 }, (_, index) => {
+    const number = index + 1;
+    return [number, {
+      number,
+      fortune: fortunes[number],
+      poemOriginal: "示範詩：雲開月明，靜守自成。",
+      poemReading: "示範讀音：くもひらき、つきあきらかに、しずかにまもればなる。",
+      poemTranslation: "示範翻譯：雲散之後月色明朗，安定守成便能有所收穫。",
+      explanation: "示範解說：眼前的道路逐漸清楚，先整理心情，再穩定地完成眼前的事。",
+      wish: "示範：慢慢推進即可實現，不宜急躁。",
+      waitingPerson: "示範：會收到消息，但需要一些時間。",
+      lostItem: "示範：仔細尋找原先使用過的地方。",
+      travel: "示範：適合短途出行，行程宜預留彈性。",
+      business: "示範：守住品質，與熟悉的夥伴合作較順利。",
+      study: "示範：按部就班複習，累積會帶來成果。",
+      love: "示範：坦率表達心意，關係會逐漸升溫。",
+      health: "示範：注意休息與作息，避免過度勉強。",
+      lawsuit: "示範：先溝通再行動，保留紀錄對自己有利。",
+      moving: "示範：可以規劃，但應先確認細節與時間。",
+      marriage: "示範：彼此尊重、慢慢了解，關係可穩定發展。",
+      advice: "示範：保持耐心，今天適合整理與準備。"
+    }];
+  })
+);
+
 const drawButton = document.querySelector("#draw-button");
 const numberElement = document.querySelector("#fortune-number");
 const typeElement = document.querySelector("#fortune-type");
@@ -20,6 +47,25 @@ const poemElement = document.querySelector("#fortune-poem");
 const fortuneCard = document.querySelector(".fortune-card");
 const omikujiBox = document.querySelector(".omikuji-box");
 const musicToggle = document.querySelector("#music-toggle");
+const themeToggle = document.querySelector("#theme-toggle");
+const fortuneDetails = document.querySelector("#fortune-details");
+
+function updateThemeButton() {
+  const isDay = document.body.classList.contains("day-mode");
+  themeToggle.textContent = isDay ? "☾ 夜間模式" : "☀ 日間模式";
+  themeToggle.setAttribute("aria-pressed", String(isDay));
+}
+
+if (window.localStorage.getItem("omikuji-theme") === "day") {
+  document.body.classList.add("day-mode");
+}
+updateThemeButton();
+
+themeToggle.addEventListener("click", () => {
+  const isDay = document.body.classList.toggle("day-mode");
+  window.localStorage.setItem("omikuji-theme", isDay ? "day" : "night");
+  updateThemeButton();
+});
 
 let audioContext;
 let musicTimer;
@@ -135,10 +181,15 @@ drawButton.addEventListener("click", () => {
   poemElement.textContent = "籤筒輕響，等待今日的指引。";
 
   window.setTimeout(() => {
-  const number = Math.floor(Math.random() * 100) + 1;
-  numberElement.textContent = `第 ${number} 番`;
-  typeElement.textContent = fortunes[number];
-  poemElement.textContent = "雲開月明，前路漸清；守心而行，自有所得。";
+    const number = Math.floor(Math.random() * 100) + 1;
+    const fortune = fortuneData[number];
+    numberElement.textContent = `第 ${number} 番`;
+    typeElement.textContent = fortune.fortune;
+    poemElement.textContent = fortune.poemOriginal;
+    fortuneDetails.querySelectorAll("[data-field]").forEach((element) => {
+      element.textContent = fortune[element.dataset.field];
+    });
+    fortuneDetails.hidden = false;
     fortuneCard.classList.remove("is-drawing");
     omikujiBox.classList.remove("is-shaking");
     drawButton.disabled = false;
